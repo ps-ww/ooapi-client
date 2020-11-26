@@ -28,7 +28,6 @@ Auth token and secret must be configured in config file.
 Default config file location is ~/.ooapi-client.
 
 Example config:
-
   secret='54321'
   token='13245'
 
