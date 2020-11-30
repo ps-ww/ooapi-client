@@ -57,7 +57,7 @@ prettyprint=false
 resourcetype='estate'
 
 # Parse command line options
-while getopts a:c:e:j:p option; do
+while getopts a:c:e:t:p option; do
   case $option in
     a) action="$OPTARG" ;;
     c) configfile="$OPTARG" ;;
