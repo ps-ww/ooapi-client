@@ -20,7 +20,7 @@ Usage: ooapi-client [OPTIONS] JSON
 
   -h            This usage help text
 
-OpenOffice API client
+OnOffice API client
 
 Takes request JSON as parameter.
 

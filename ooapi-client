@@ -31,7 +31,7 @@ Usage: $(basename $0) [OPTIONS] JSON
 
   -h            This usage help text
 
-OpenOffice API client
+OnOffice API client
 
 Takes request JSON as parameter.
 
