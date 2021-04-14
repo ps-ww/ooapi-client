@@ -43,7 +43,7 @@ Example config:
   token='13245'
 
 Example commands:
-  $(basename $0) -p '{"data":["Id","kaufpreis","lage"],"listlimit":10}'
+  $(basename $0) -p '{\"data\":[\"Id\",\"kaufpreis\",\"lage\"],\"listlimit\":10}'
   cat example.json | $(basename $0) -p -
   "
   exit ${1:-$SUCCESS}
@@ -127,6 +127,12 @@ requestjson="{\"token\":\"${token}\",\"request\":{\"actions\":[{\"actionid\":\"$
 
 # Send request to API
 result=$(curl -s -X POST -H "Content-Type: application/json" -d "${requestjson}" https://api.onoffice.de/api/${apiversion}/api.php)
+
+echo
+echo Request:
+echo $requestjson
+echo
+echo
 
 if [ "$prettyprint" = true ]; then
   echo "$result" | jq .
