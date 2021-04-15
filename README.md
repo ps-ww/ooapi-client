@@ -16,6 +16,7 @@ Usage: ooapi-client [OPTIONS] JSON
   -c FILE       Alternate config file
   -e VERSION    API version (Default: latest)
   -p            Pretty print response
+  -r            Print request
   -t TYPE       Resource type (Default: estate)
 
   -h            This usage help text

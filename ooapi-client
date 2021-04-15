@@ -27,6 +27,7 @@ Usage: $(basename $0) [OPTIONS] JSON
   -c FILE       Alternate config file
   -e VERSION    API version (Default: latest)
   -p            Pretty print response
+  -r            Print request
   -t TYPE       Resource type (Default: estate)
 
   -h            This usage help text
@@ -54,15 +55,17 @@ action='read'
 configfile="${HOME}/.ooapi-client"
 apiversion='latest'
 prettyprint=false
+printrequest=false
 resourcetype='estate'
 
 # Parse command line options
-while getopts a:c:e:t:p option; do
+while getopts a:c:e:t:hpr option; do
   case $option in
     a) action="$OPTARG" ;;
     c) configfile="$OPTARG" ;;
     e) apiversion="$OPTARG" ;;
     p) prettyprint=true;;
+    r) printrequest=true;;
     t) resourcetype="$OPTARG" ;;
 
     h) usage ;;
@@ -128,11 +131,13 @@ requestjson="{\"token\":\"${token}\",\"request\":{\"actions\":[{\"actionid\":\"$
 # Send request to API
 result=$(curl -s -X POST -H "Content-Type: application/json" -d "${requestjson}" https://api.onoffice.de/api/${apiversion}/api.php)
 
-echo
-echo Request:
-echo $requestjson
-echo
-echo
+if [ "$printrequest" = true ]; then
+  echo
+  echo Request:
+  echo $requestjson
+  echo
+  echo
+fi
 
 if [ "$prettyprint" = true ]; then
   echo "$result" | jq .
