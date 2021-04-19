@@ -85,7 +85,7 @@ else
 fi
 
 # Verify JSON
-if ! jq -e . >/dev/null 2>&1 <<<"$parameters"; then
+if [ ! jq -e . >/dev/null 2>&1 <<<"$parameters" ]; then
     echo Failed to parse JSON input:
     echo
     echo "$parameters"
@@ -94,7 +94,7 @@ if ! jq -e . >/dev/null 2>&1 <<<"$parameters"; then
 fi
 
 # Sort JSON keys alphabetically
-parameterssorted="$(jq -cS <<<"$parameters")"
+parameterssorted="$(jq -cS . <<<"$parameters")"
 
 # Import config
 if [ ! -f "$configfile" ]; then
