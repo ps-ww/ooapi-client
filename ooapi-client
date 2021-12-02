@@ -96,6 +96,9 @@ fi
 # Sort JSON keys alphabetically
 parameterssorted="$(jq -cS . <<<"$parameters")"
 
+# Replace '/' with '\/'
+parameterssorted="${parameterssorted/\//\\\/}"
+
 # Import config
 if [ ! -f "$configfile" ]; then
   echo Config file \""$configfile"\" does not exist, aborting!
